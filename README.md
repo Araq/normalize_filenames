@@ -10,8 +10,10 @@ files local, you can call normalize on them to *fix* them.  Example:
 
 ```
 $ normalize_filenames *.mp4
-Would [CAM] 130708 _uc368_ub2c8_ud790 Goodbye To Romance - KBS _ub77c_ub514_uc624 __uc774_ubb34_uc1a1, _uc784_uc218_ubbfc_uc758 _ud76c_ub9dd_uac00_uc694_ _uacf5_uac1c_ubc29_uc1a1_hd.mp4 -> 'CAM 130708 써니힐 Goodbye To Romance - KBS 라디오  이무송, 임수민의 희망가요  공개방송 hd.mp4'
-Would [CAM] 130708 _uc368_ub2c8_ud790 _ub9cc_uc778_uc758 _uc5f0_uc778 - KBS _ub77c_ub514_uc624 __uc774_ubb34_uc1a1, _uc784_uc218_ubbfc_uc758 _ud76c_ub9dd_uac00_uc694_ _uacf5_uac1c_ubc29_uc1a1_hd.mp4 -> 'CAM 130708 써니힐 만인의 연인 - KBS 라디오  이무송, 임수민의 희망가요  공개방송 hd.mp4'
+Would [CAM] 130708 _uc368_ub2c8_ud790 Goodbye To Romance - KBS _ub77c_ub514_uc624 __uc774_ubb34_uc1a1, _uc784_uc218_ubbfc_uc758 _ud76c_ub9dd_uac00_uc694_ _uacf5_uac1c_ubc29_uc1a1_hd.mp4
+  -> 'CAM 130708 써니힐 Goodbye To Romance - KBS 라디오  이무송, 임수민의 희망가요  공개방송 hd.mp4'
+Would [CAM] 130708 _uc368_ub2c8_ud790 _ub9cc_uc778_uc758 _uc5f0_uc778 - KBS _ub77c_ub514_uc624 __uc774_ubb34_uc1a1, _uc784_uc218_ubbfc_uc758 _ud76c_ub9dd_uac00_uc694_ _uacf5_uac1c_ubc29_uc1a1_hd.mp4
+  -> 'CAM 130708 써니힐 만인의 연인 - KBS 라디오  이무송, 임수민의 희망가요  공개방송 hd.mp4'
 ```
 
 
