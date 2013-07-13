@@ -1,4 +1,4 @@
-import argument_parser, os, re, tables
+import argument_parser, os, re, tables, strutils, parseutils, unicode, sequtils
 
 const
   VERSION_STR* = "0.1.1" ## Program version as a string.
@@ -54,13 +54,43 @@ proc process_commandline(): tuple[doit: bool, files: seq[string]]=
   result.files = map(parsed.positional_parameters,
     proc (x: Tparsed_parameter): string = x.str_val)
 
+const
+  SUBST = [("_", " "), (".", " "), ("[", ""), ("]", ""), ("%28", "("),
+    ("%29", ")"), ("%2C", ","), ("%26", "&"), ("+", " "),
+    ("%5B", ""), ("%5D", ""), ("%20", " ")]
+
+  R_UNICODE = r"_u[0-9a-f][0-9a-f][0-9a-f][0-9a-f]"
+
 
 proc normalize_filename(filename: string, doit: bool) =
   ## Normalizes a filename.
   ##
   ## If the doit parameter is true, the file will be renamed. Otherwise the
   ## rename will be echoed but nothing will actually happen.
-  echo filename
+  let RE_UNICODE {.global.} = re(R_UNICODE)
+  var (dirname, dest, ext) = filename.splitFile
+
+  # Unicode escaping.
+  for match in toSeq(dest.findAll(RE_UNICODE)):
+    var temporal: int
+    if parseHex(match, temporal, 2) > 0:
+      let u = toUTF8(TRune(temporal))
+      dest = dest.replace(match, u)
+
+  # Simple replacements.
+  for pre, post in SUBST.items:
+    dest = dest.replace(pre, post)
+
+  dest = dirname / dest & ext
+
+  if dest == filename:
+    echo "No need to rename '$1'" % [filename]
+  else:
+    if doit:
+      echo "Renaming $1 -> '$2'" % [filename, dest]
+      moveFile(filename, dest)
+    else:
+      echo "Would $1 -> '$2'" % [filename, dest]
 
 
 when isMainModule:
