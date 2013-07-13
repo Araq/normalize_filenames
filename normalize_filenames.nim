@@ -1,8 +1,8 @@
 import argument_parser, os, re, tables, strutils, parseutils, unicode, sequtils
 
 const
-  VERSION_STR* = "0.1.1" ## Program version as a string.
-  VERSION_INT* = (major: 0, minor: 1, maintenance: 1) ## \
+  VERSION_STR* = "0.0.0" ## Program version as a string.
+  VERSION_INT* = (major: 0, minor: 0, maintenance: 0) ## \
   ## Program version as an integer tuple.
   ##
   ## Major version changes mean significant new features or a break in

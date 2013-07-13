@@ -48,7 +48,7 @@ output. Once you are sure it does what you want, pass the ``doit`` switch.
 Changes
 =======
 
-This is version 0.1.1. For a list of changes see the [CHANGES.md
+This is version 0.0.0. For a list of changes see the [CHANGES.md
 file](CHANGES.md).
 
 
